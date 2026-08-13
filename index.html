@@ -563,6 +563,41 @@
         }
 
         /* ========================= */
+        /* DSA SECTION               */
+        /* ========================= */
+        .dsa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dsa-item {
+            background: rgba(255,255,255,0.05);
+            padding: 22px 25px;
+            border-radius: 12px;
+            border-left: 4px solid #4ecdc4;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .dsa-item:hover {
+            transform: translateX(6px);
+            background: rgba(255,255,255,0.09);
+        }
+
+        .dsa-item strong {
+            display: block;
+            color: #4ecdc4;
+            font-size: 1.05em;
+            margin-bottom: 6px;
+        }
+
+        .dsa-item p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.93em;
+            line-height: 1.5;
+        }
+
+        /* ========================= */
         /* CERTIFICATIONS FIX        */
         /* ========================= */
         .cert-grid {
@@ -711,26 +746,13 @@
             <div class="experience-item">
                 <div class="experience-header">
                     <div class="company-name">Aivora Solutions</div>
-                    <div class="duration">August 2025 — Present</div>
+                    <div class="duration">August 2025 — February 2026</div>
                 </div>
-                <div class="role">AI Research & Development Engineer (Remote)</div>
+                <div class="role">Software Engineer — AI Infrastructure (Remote)</div>
                 <div class="location" style="color:#aaa; margin-bottom:10px;">Mumbai, India</div>
                 <ul style="margin-top: 10px; padding-left: 20px; line-height:1.7;">
-                    <li>Researched and innovated AI-driven solutions aligned with the company's vision to transform business operations.</li>
-                    <li>Collaborated with the core team on product development, prototyping, and deployment of AI-powered applications.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div class="company-name">Suvidha Foundation</div>
-                    <div class="duration">04/2025 — 05/2025</div>
-                </div>
-                <div class="role">ML Research Intern (Remote)</div>
-                <div style="color:#aaa; margin-bottom:10px;">Mumbai, India</div>
-                <ul style="margin-top: 10px; padding-left: 20px; line-height:1.7;">
-                    <li>Researched AI-driven pedagogy by reviewing 70+ papers; proposed a RAG-based Transformer model for personalized LLM-powered learning.</li>
-                    <li>Designed a research-backed LLM-based Nutritional chatbot framework focused on food detection and personalized meal recommendations.</li>
+                    <li>Architected and deployed a production-grade FastAPI backend serving AI inference workloads; reduced average API response latency by 35% through async request handling and connection pooling.</li>
+                    <li>Designed a multi-tenant prompt orchestration layer supporting 3 concurrent product lines; decoupled business logic from LLM provider using an adapter pattern, cutting provider-switch cost from days to hours.</li>
                 </ul>
             </div>
         </section>
@@ -740,132 +762,127 @@
             <h2><i class="fas fa-code"></i> Projects</h2>
             <div class="projects-grid">
 
-                <!-- FinVerse -->
-                <div class="project-card" onclick="window.open('https://drive.google.com/file/d/1bjEzNX8yoqLs4BfL2wX3Heit2zR4VfGo/view?usp=sharing')">
+                <!-- StreamBill Pro -->
+                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/StreamBill-Pro')">
                     <div class="project-header">
-                        <div class="project-title">FinVerse</div>
-                        <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="project-title">StreamBill Pro</div>
+                        <div class="project-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     </div>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">React.js</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">JWT</span>
-                        <span class="tech-tag">NoSQL</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis Streams</span>
+                        <span class="tech-tag">Celery</span>
+                        <span class="tech-tag">Docker</span>
                     </div>
                     <div class="project-description">
                         <ul>
-                            <li>Developed a full-stack personal finance application to educate users on budgeting, saving, and investing</li>
-                            <li>Integrated OpenAI-powered chatbot for real-time financial advice and assistance</li>
-                            <li>Designed interactive quiz module with dynamic scoring to assess financial literacy</li>
-                            <li>Simulated stock trading with virtual currency for real-world investment strategies</li>
-                            <li>Implemented secure REST APIs with JWT authentication and NoSQL database integration</li>
+                            <li>Engineered a multi-tenant usage-based billing and API metering platform with a graduated tier pricing engine supporting flat fees, volume discounts, and overage billing across multiple organizations.</li>
+                            <li>Built a high-throughput event ingestion pipeline using Redis Streams with consumer groups, enabling guaranteed at-least-once delivery, automatic redelivery on worker failure, and batch DB writes of 100 events per flush.</li>
+                            <li>Implemented idempotent event deduplication via Redis, an outbox pattern for crash-safe invoice delivery, a WebSocket-based live usage dashboard, and Celery workers for hourly aggregation and payment retry with exponential backoff.</li>
                         </ul>
                     </div>
                     <div class="project-stats">
                         <div class="stat-item">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Features</span>
+                            <span class="stat-number">100</span>
+                            <span class="stat-label">Events/Flush</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">React</span>
-                            <span class="stat-label">Frontend</span>
+                            <span class="stat-number">Multi</span>
+                            <span class="stat-label">Tenant</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">AI</span>
-                            <span class="stat-label">Powered</span>
+                            <span class="stat-number">Redis</span>
+                            <span class="stat-label">Streams</span>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/JayantDethe26/FinVerse" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                        <a href="https://github.com/JayantDethe26/StreamBill-Pro" class="project-link" target="_blank" onclick="event.stopPropagation();">
                             <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
 
-                <!-- Intervue.AI -->
-                <div class="project-card">
+                <!-- IntelliFix Engine -->
+                <div class="project-card" onclick="window.open('https://drive.google.com/file/d/1UCisHzmCBPNWiVspaB8_mDbGiJWgw1iJ/view?usp=sharing')">
                     <div class="project-header">
-                        <div class="project-title">Intervue.AI</div>
-                        <div class="project-icon"><i class="fas fa-microphone"></i></div>
+                        <div class="project-title">IntelliFix Engine</div>
+                        <div class="project-icon"><i class="fas fa-robot"></i></div>
                     </div>
                     <div class="project-tech">
-                        <span class="tech-tag">LLMs</span>
-                        <span class="tech-tag">STT</span>
-                        <span class="tech-tag">OpenCV</span>
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">RAG</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Engineered a modular AI-agent architecture to dynamically adapt follow-up questions based on candidate responses and contextual memory.</li>
-                            <li>Implemented real-time facial expression and attention analysis using OpenCV to enhance behavioral assessment during interviews.</li>
-                            <li>Built a structured evaluation engine to score candidates across technical accuracy, communication clarity, and problem-solving ability.</li>
-                            <li>Developed automated candidate report generation with explainable AI-driven feedback and performance summaries.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">AI</span>
-                            <span class="stat-label">Automation</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">STT</span>
-                            <span class="stat-label">Pipeline</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Smart</span>
-                            <span class="stat-label">Evaluation</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JayantDethe26/IntervueAI" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Marathi LLM -->
-                <div class="project-card" onclick="window.open('https://drive.google.com/file/d/1gF-UEEo8oV1fsWIofwbGVZldnSJLE-lI/view?usp=drive_link')">
-                    <div class="project-header">
-                        <div class="project-title">OctoBridge</div>
-                        <div class="project-icon"><i class="fas fa-plug"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">FastMCP</span>
-                        <span class="tech-tag">Claude AI</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">Docker</span>
                         <span class="tech-tag">GitHub API</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">MCP Protocol</span>
-                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">Multi-Agent Systems</span>
                     </div>
                     <div class="project-description">
                         <ul>
-                            <li>Built a custom MCP (Model Context Protocol) server enabling Claude AI to interact with GitHub repositories</li>
-                            <li>Implemented tools for repo inspection, file search, file creation, and commit pushing via GitHub REST API</li>
-                            <li>Integrated secure token-based GitHub authentication with environment variable management</li>
-                            <li>Enabled Claude to read, create, and update files in any repo through natural language commands</li>
-                            <li>Designed with FastMCP framework using stdio transport for seamless Claude Desktop integration</li>
+                            <li>Engineered a fault-tolerant autonomous code-repair system: a 3-agent LangGraph pipeline (analyser → fixer → validator) that reads GitHub issues, generates patches, and raises PRs with zero human intervention.</li>
+                            <li>Implemented Docker-sandboxed execution with iterative retry-backoff logic and isolated environment state per run to eliminate cross-execution contamination, reducing false-failure rate by ~60% versus stateless execution.</li>
+                            <li>Built a dynamic entry-point detection algorithm using AST parsing across multi-file repositories; the system successfully resolved issues on real-world OSS repos averaging 200+ source files.</li>
                         </ul>
                     </div>
                     <div class="project-stats">
                         <div class="stat-item">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Tools</span>
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Agent Pipeline</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">MCP</span>
-                            <span class="stat-label">Protocol</span>
+                            <span class="stat-number">~60%</span>
+                            <span class="stat-label">Fewer False Fails</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">AI</span>
-                            <span class="stat-label">Powered</span>
+                            <span class="stat-number">200+</span>
+                            <span class="stat-label">Files/Repo</span>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">
-                            <i class="fab fa-github"></i> Code
+                        <a href="https://drive.google.com/file/d/1UCisHzmCBPNWiVspaB8_mDbGiJWgw1iJ/view?usp=sharing" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- URL Shortener -->
+                <div class="project-card" onclick="window.open('https://url-shortner-c933.onrender.com')">
+                    <div class="project-header">
+                        <div class="project-title">URL Shortener</div>
+                        <div class="project-icon"><i class="fas fa-link"></i></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB Atlas</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Render</span>
+                    </div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Built a production-deployed URL shortening service using Base62 encoding over a 62⁶ keyspace (~56B combinations), with optimistic locking in MongoDB to prevent key collisions under concurrent write load.</li>
+                            <li>Reduced redirect latency by ~82% using Redis write-through caching with TTL aligned to URL expiry; validated via load test at 300 concurrent requests — p95 latency dropped from 190ms to 34ms.</li>
+                            <li>Designed async analytics writes via an event-queue pattern to decouple the redirect path from DB writes, enforced sliding-window rate limiting (100 req/min/IP), and containerised with Docker for deployment on Render.</li>
+                        </ul>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">~82%</span>
+                            <span class="stat-label">Latency Cut</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">34ms</span>
+                            <span class="stat-label">p95 Latency</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">56B</span>
+                            <span class="stat-label">Keyspace</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://url-shortner-c933.onrender.com" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fas fa-external-link-alt"></i> Live
                         </a>
                     </div>
                 </div>
@@ -881,24 +898,8 @@
                     <div class="education-image"><i class="fas fa-university"></i></div>
                     <div class="education-title">Vidyalankar Institute of Technology</div>
                     <div class="education-duration">2022 — 2026</div>
-                    <div class="degree">B.Tech in Information Technology with Specialization in AIML (Honors)</div>
+                    <div class="degree">B.Tech in Information Technology with Specialization in AI/ML (Honors)</div>
                     <div class="cgpa">CGPA: 8.9</div>
-                    <div class="location">Mumbai, India</div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-image"><i class="fas fa-school"></i></div>
-                    <div class="education-title">B.K Birla College of Science, Commerce and Arts</div>
-                    <div class="education-duration">2020 — 2022</div>
-                    <div class="degree">Maharashtra State Board of Secondary and Higher Secondary Education</div>
-                    <div class="location">Thane, India</div>
-                </div>
-
-                <div class="education-card">
-                    <div class="education-image"><i class="fas fa-book"></i></div>
-                    <div class="education-title">Rita Memorial High School</div>
-                    <div class="education-duration">2020</div>
-                    <div class="degree">Primary and Secondary Education</div>
                     <div class="location">Mumbai, India</div>
                 </div>
             </div>
@@ -909,69 +910,83 @@
             <h2><i class="fas fa-cog"></i> Technical Skills</h2>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3>Programming Languages</h3>
+                    <h3>Languages</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Python (Advanced)</span>
                         <span class="skill-tag">Java</span>
-                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">JavaScript / TypeScript</span>
+                        <span class="skill-tag">Go</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>AI & Machine Learning</h3>
+                    <h3>Backend & APIs</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">LLMs</span>
-                        <span class="skill-tag">Generative AI</span>
-                        <span class="skill-tag">AI Agents</span>
-                        <span class="skill-tag">RAG</span>
-                        <span class="skill-tag">Model Fine-Tuning (LoRA, PEFT)</span>
-                        <span class="skill-tag">Model Quantization</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">Multimodal AI</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Next.js</span>
                         <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">Realtime APIs</span>
-                        <span class="skill-tag">Twilio</span>
-                        <span class="skill-tag">SIP</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">REST API Design</span>
+                        <span class="skill-tag">Async Programming</span>
+                        <span class="skill-tag">WebSockets</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Cloud & Deployment</h3>
+                    <h3>Infrastructure & DevOps</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Azure</span>
                         <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">AWS (EC2, S3)</span>
                         <span class="skill-tag">GitHub Actions</span>
                         <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Render</span>
+                        <span class="skill-tag">Vercel</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Frameworks & Tools</h3>
+                    <h3>Databases & Caching</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Hugging Face</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">LlamaIndex</span>
-                        <span class="skill-tag">LangGraph</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">vLLMs</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
                         <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MongoDB Atlas</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">MySQL</span>
                     </div>
+                </div>
+                <div class="skill-category">
+                    <h3>AI / ML Stack</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LLMs</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LangGraph</span>
+                        <span class="skill-tag">LlamaIndex</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Fine-tuning (LoRA, PEFT)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Practices</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub API</span>
+                        <span class="skill-tag">Unit Testing (pytest)</span>
+                        <span class="skill-tag">System Design</span>
+                        <span class="skill-tag">Agile Workflows</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competitive Programming & DSA -->
+        <section class="section">
+            <h2><i class="fas fa-laptop-code"></i> Competitive Programming & DSA</h2>
+            <div class="dsa-list">
+                <div class="dsa-item">
+                    <strong>LeetCode</strong>
+                    <p>250+ problems solved — core focus on graphs (BFS/DFS, Dijkstra), dynamic programming, sliding window, and binary search.</p>
+                </div>
+                <div class="dsa-item">
+                    <strong>Problem Solving</strong>
+                    <p>Consistent practice on time/space complexity analysis; comfortable with O(n log n) optimisation trade-offs in real system design contexts.</p>
                 </div>
             </div>
         </section>
@@ -985,10 +1000,6 @@
                     <div class="cert-source">Udemy</div>
                 </div>
                 <div class="cert-item">
-                    <strong>Unity Essentials</strong>
-                    <div class="cert-source">Unity</div>
-                </div>
-                <div class="cert-item">
                     <strong>Junior Programmer Pathway</strong>
                     <div class="cert-source">Unity</div>
                 </div>
@@ -998,7 +1009,7 @@
                 </div>
                 <div class="cert-item">
                     <strong>TCS iON Career Edge — Young Professional</strong>
-                    <div class="cert-source">TCS</div>
+                    <div class="cert-source">TCS iON</div>
                 </div>
             </div>
         </section>
