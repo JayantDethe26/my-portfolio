@@ -1,1278 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jayant Dethe - AI/ML Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #d4b08a;
-            background-image:
-                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
-                repeating-linear-gradient(90deg, rgba(110, 72, 36, 0.09) 0 2px, transparent 2px 8px),
-                linear-gradient(rgba(42, 28, 17, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(42, 28, 17, 0.06) 1px, transparent 1px);
-            background-size: 220px 220px, auto, 32px 32px, 32px 32px;
-            color: #3b2f25;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .circuit {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #8b5e3c;
-            border-radius: 50%;
-            animation: circuit 15s linear infinite;
-        }
-
-        @keyframes circuit {
-            0% { transform: translateX(-100px) translateY(0px); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateX(calc(100vw + 100px)) translateY(-100px); opacity: 0; }
-        }
-
-        /* Header Section */
-        .header {
-            position: relative;
-            padding: 80px 20px;
-            text-align: center;
-            background: linear-gradient(45deg, rgba(139,94,60,0.1) 0%, rgba(181,84,58,0.08) 100%);
-            border-bottom: 2px solid rgba(42,28,17,0.35);
-        }
-
-        .profile-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #2a1c11;
-            background: linear-gradient(45deg, #b5543a, #8b5e3c, #566a47, #7a8f64);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: #fff;
-            animation: pulse 2s ease-in-out infinite alternate;
-            box-shadow: 0 0 30px rgba(139,94,60,0.5);
-            flex-shrink: 0;
-        }
-
-        @keyframes pulse {
-            from { box-shadow: 0 0 30px rgba(139,94,60,0.5); }
-            to { box-shadow: 0 0 50px rgba(139,94,60,0.8); }
-        }
-
-        .profile-info h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #2a1c11, #7a2f14, #3d2a14);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: textGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            from { filter: drop-shadow(0 2px 4px rgba(139,94,60,0.2)); }
-            to { filter: drop-shadow(0 4px 10px rgba(139,94,60,0.35)); }
-        }
-
-        .profile-info p {
-            font-size: 1.3em;
-            color: #4a2f1a;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: #3b2f25;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid #2a1c11;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: rgba(139,94,60,0.1);
-        }
-
-        .contact-links a:hover {
-            background: #8b5e3c;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(139,94,60,0.4);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Section Styling */
-        .section {
-            margin: 60px 0;
-            padding: 40px;
-            background: #fbf6ea;
-            border-radius: 20px;
-            border: 2px solid rgba(42,28,17,0.55);
-            box-shadow: 0 12px 30px rgba(60,35,15,0.28);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #8b5e3c, #b5543a, #566a47);
-            animation: slideRight 3s ease-in-out infinite;
-        }
-
-        @keyframes slideRight {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .section h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: #8b5e3c;
-            text-align: center;
-            position: relative;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #b5543a, #566a47);
-            border-radius: 2px;
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background: rgba(139,94,60,0.05);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 4px solid #8b5e3c;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .experience-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(139,94,60,0.2);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .company-name {
-            font-size: 1.5em;
-            color: #b5543a;
-            font-weight: bold;
-        }
-
-        .duration {
-            color: #566a47;
-            font-weight: bold;
-        }
-
-        .role {
-            font-size: 1.2em;
-            color: #8b5e3c;
-            margin-bottom: 10px;
-        }
-
-        /* ===================== */
-        /* PROJECTS SECTION FIX */
-        /* ===================== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 30px;
-            align-items: start;
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, rgba(139,94,60,0.07) 0%, rgba(181,84,58,0.07) 50%, rgba(86,106,71,0.07) 100%);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(139,94,60,0.25);
-            position: relative;
-            transition: box-shadow 0.4s ease, transform 0.4s ease;
-            cursor: pointer;
-        }
-
-        /* Removed the ::before gradient border that caused flickering */
-        .project-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(139,94,60,0.04) 0%, rgba(181,84,58,0.04) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .project-card:hover::after {
-            opacity: 1;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 20px 45px rgba(139,94,60,0.2), 0 0 0 1px rgba(139,94,60,0.3);
-            transform: translateY(-6px);
-        }
-
-        .project-card:active {
-            transform: translateY(-2px);
-        }
-
-        .project-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-        }
-
-        .project-title {
-            font-size: 1.5em;
-            background: linear-gradient(45deg, #b5543a, #8b5e3c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: bold;
-            position: relative;
-        }
-
-        .project-title::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #b5543a, #8b5e3c);
-            transition: width 0.4s ease;
-        }
-
-        .project-card:hover .project-title::after {
-            width: 100%;
-        }
-
-        .project-icon {
-            width: 46px;
-            height: 46px;
-            background: linear-gradient(45deg, #b5543a, #566a47);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: white;
-            flex-shrink: 0;
-            transition: transform 0.5s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card:hover .project-icon {
-            transform: rotate(360deg) scale(1.1);
-            box-shadow: 0 6px 20px rgba(139,94,60,0.4);
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 18px;
-        }
-
-        .tech-tag {
-            background: rgba(139,94,60,0.12);
-            color: #566a47;
-            padding: 5px 11px;
-            border-radius: 12px;
-            font-size: 0.82em;
-            font-weight: 600;
-            border: 1px solid rgba(139,94,60,0.25);
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .tech-tag:hover {
-            background: rgba(139,94,60,0.25);
-            transform: translateY(-2px);
-        }
-
-        .project-description ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .project-description li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 10px;
-            color: rgba(59,47,37,0.88);
-            font-size: 0.93em;
-            line-height: 1.5;
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-
-        .project-description li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            top: 1px;
-            color: #8b5e3c;
-            font-size: 11px;
-            transition: color 0.2s ease;
-        }
-
-        .project-description li:hover {
-            color: #1f1812;
-            transform: translateX(4px);
-        }
-
-        .project-description li:hover::before {
-            color: #b5543a;
-        }
-
-        .project-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(139,94,60,0.2);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #8b5e3c;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.78em;
-            color: rgba(59,47,37,0.65);
-            margin-top: 2px;
-        }
-
-        /* PROJECT LINKS — fixed shimmer & z-index */
-        .project-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 18px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 9px 18px;
-            background: rgba(139,94,60,0.1);
-            border: 1px solid rgba(139,94,60,0.35);
-            border-radius: 18px;
-            color: #8b5e3c;
-            text-decoration: none;
-            font-size: 0.88em;
-            font-weight: 600;
-            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
-            cursor: pointer;
-            /* No ::before shimmer — it caused flickering */
-        }
-
-        .project-link:hover {
-            background: rgba(139,94,60,0.22);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(139,94,60,0.3);
-            color: #3b2f25;
-        }
-
-        .project-link i {
-            font-size: 14px;
-            pointer-events: none;
-        }
-
-        /* ======================== */
-        /* EDUCATION SECTION FIX   */
-        /* ======================== */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            align-items: stretch;
-        }
-
-        .education-card {
-            background: rgba(240,228,203,0.75);
-            padding: 30px 25px;
-            border-radius: 18px;
-            border: 1px solid rgba(139,94,60,0.3);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .education-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(139,94,60,0.25);
-        }
-
-        .education-image {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 8px;
-            background: linear-gradient(45deg, #b5543a, #566a47);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .education-title {
-            font-size: 1.15em;
-            color: #8b5e3c;
-            font-weight: bold;
-            line-height: 1.3;
-        }
-
-        .education-duration {
-            color: #566a47;
-            font-weight: bold;
-            font-size: 0.95em;
-        }
-
-        .education-card .degree {
-            color: rgba(59,47,37,0.85);
-            font-size: 0.9em;
-            line-height: 1.4;
-        }
-
-        .education-card .cgpa {
-            color: #8b5e3c;
-            font-weight: bold;
-            font-size: 1em;
-        }
-
-        .education-card .location {
-            color: #566a47;
-            font-size: 0.9em;
-        }
-
-        /* ====================== */
-        /* SKILLS SECTION FIX     */
-        /* ====================== */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            align-items: start;
-        }
-
-        .skill-category {
-            background: rgba(139,94,60,0.05);
-            padding: 22px;
-            border-radius: 14px;
-            border: 1px solid rgba(139,94,60,0.25);
-            height: 100%;
-        }
-
-        .skill-category h3 {
-            color: #b5543a;
-            margin-bottom: 14px;
-            font-size: 1.1em;
-            border-bottom: 1px solid rgba(181,84,58,0.25);
-            padding-bottom: 8px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background: rgba(139,94,60,0.15);
-            padding: 6px 13px;
-            border-radius: 18px;
-            font-size: 0.88em;
-            border: 1px solid rgba(139,94,60,0.4);
-            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-            cursor: default;
-        }
-
-        .skill-tag:hover {
-            background: #8b5e3c;
-            color: #fff;
-            transform: scale(1.08);
-        }
-
-        /* ========================= */
-        /* DSA SECTION               */
-        /* ========================= */
-        .dsa-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .dsa-item {
-            background: rgba(240,228,203,0.75);
-            padding: 22px 25px;
-            border-radius: 12px;
-            border-left: 4px solid #566a47;
-            transition: transform 0.25s ease, background 0.25s ease;
-        }
-
-        .dsa-item:hover {
-            transform: translateX(6px);
-            background: rgba(247,239,221,1);
-        }
-
-        .dsa-item strong {
-            display: block;
-            color: #566a47;
-            font-size: 1.05em;
-            margin-bottom: 6px;
-        }
-
-        .dsa-item p {
-            color: rgba(59,47,37,0.85);
-            font-size: 0.93em;
-            line-height: 1.5;
-        }
-
-        /* ========================= */
-        /* CERTIFICATIONS FIX        */
-        /* ========================= */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 16px;
-            align-items: stretch;
-        }
-
-        .cert-item {
-            background: rgba(240,228,203,0.75);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #566a47;
-            transition: transform 0.25s ease, background 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .cert-item:hover {
-            transform: translateX(5px);
-            background: rgba(247,239,221,1);
-        }
-
-        .cert-item strong {
-            font-size: 0.95em;
-            line-height: 1.35;
-        }
-
-        .cert-item .cert-source {
-            color: #566a47;
-            font-size: 0.85em;
-        }
-
-        /* ========================= */
-        /* ACHIEVEMENTS FIX          */
-        /* ========================= */
-        .achievements-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .achievement-item {
-            background: rgba(240,228,203,0.75);
-            padding: 22px 25px;
-            border-radius: 12px;
-            border-left: 4px solid #b5543a;
-            transition: transform 0.25s ease, background 0.25s ease;
-        }
-
-        .achievement-item:hover {
-            transform: translateX(6px);
-            background: rgba(247,239,221,1);
-        }
-
-        .achievement-item strong {
-            display: block;
-            color: #b5543a;
-            font-size: 1.05em;
-            margin-bottom: 6px;
-        }
-
-        .achievement-item p {
-            color: rgba(59,47,37,0.85);
-            font-size: 0.93em;
-            line-height: 1.5;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .profile-container { flex-direction: column; gap: 20px; }
-            .profile-info h1 { font-size: 2.5em; }
-            .section { margin: 30px 0; padding: 25px 18px; }
-            .section h2 { font-size: 2em; }
-            .experience-header { flex-direction: column; align-items: flex-start; }
-            .contact-links { flex-direction: column; align-items: center; }
-            .projects-grid { grid-template-columns: 1fr; }
-        }
-
-        /* FAB */
-        .fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(45deg, #b5543a, #566a47);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            font-size: 22px;
-            box-shadow: 0 5px 20px rgba(139,94,60,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1000;
-        }
-
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(139,94,60,0.5);
-        }
-
-        /* ---------- Light tech accents ---------- */
-        :root { --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Courier New', monospace; }
-
-        .term {
-            font-family: var(--mono);
-            font-size: 0.95em;
-            color: #4a2f1a;
-            margin-bottom: 6px;
-        }
-        .term .prompt { color: #b5543a; font-weight: 700; margin-right: 6px; }
-        .cursor {
-            display: inline-block;
-            width: 9px;
-            height: 1.05em;
-            margin-left: 4px;
-            vertical-align: text-bottom;
-            background: #2a1c11;
-            animation: blink 1s steps(2, start) infinite;
-        }
-        @keyframes blink { to { visibility: hidden; } }
-
-        .section h2::before {
-            content: '// ';
-            font-family: var(--mono);
-            font-weight: 700;
-            color: #b5543a;
-        }
-
-        .tech-tag, .skill-tag, .stat-number, .stat-label, .duration, .project-link, .cert-source, .location {
-            font-family: var(--mono);
-        }
-        .tech-tag { font-size: 0.74em; }
-        .skill-tag { font-size: 0.8em; }
-        .stat-label { font-size: 0.72em; }
-        .skill-category h3 { font-family: var(--mono); letter-spacing: 0.04em; }
-        .skill-category h3::before { content: '> '; color: #566a47; }
-
-        /* editor-style window dots on project cards */
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 18px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #b5543a;
-            box-shadow: 14px 0 0 #d9a441, 28px 0 0 #566a47;
-            opacity: 0.85;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .cursor { animation: none; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayant Dethe - AI/ML Developer Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0c;--card:#101012;--line:rgba(255,255,255,.12);--txt:#f2f2f3;--mut:#a3a3aa;--chip:#1a1a1d;--acc:#e6f21f}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--txt);line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:830px;margin:0 auto;padding:0 20px 90px}
+.hero{padding:70px 0 10px}
+.hero h1{font-size:2.6rem;font-weight:700;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:1.1rem;margin:6px 0 20px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:var(--chip);border:1px solid var(--line);border-radius:10px;font-weight:500;font-size:.92rem;transition:border-color .2s,background .2s}
+.btn:hover{border-color:rgba(255,255,255,.35);background:#232327}
+.btn:focus-visible,.fab:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+/* bracket section label */
+.label{position:relative;display:inline-block;margin:64px 0 22px;padding:8px 14px;font-size:1.15rem;font-weight:600;background:#1a1a1d}
+.label::before,.label::after{content:'';position:absolute;width:12px;height:12px;border:2px solid #d6d6da}
+.label::before{top:-4px;left:-4px;border-right:0;border-bottom:0}
+.label::after{bottom:-4px;right:-4px;border-left:0;border-top:0}
+.label i{display:none}
+.label span{position:absolute;width:12px;height:12px;border:2px solid #d6d6da}
+.label .tr{top:-4px;right:-4px;border-left:0;border-bottom:0}
+.label .bl{bottom:-4px;left:-4px;border-right:0;border-top:0}
+/* skills marquee */
+.marq{overflow:hidden;margin-bottom:12px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:34px;width:max-content;animation:scroll 40s linear infinite}
+.marq:nth-child(2) .track{animation-direction:reverse;animation-duration:46s}
+.marq:hover .track{animation-play-state:paused}
+.sk{display:flex;align-items:center;gap:10px;font-size:1.02rem;white-space:nowrap;padding:6px 0}
+.sk i{font-size:1.15rem;width:22px;text-align:center}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* cards */
+.card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;margin-bottom:26px}
+.card::after{content:'';position:absolute;top:-10%;left:-30%;width:90px;height:1px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(-40deg);opacity:0;animation:star 7s ease-in infinite}
+.card:nth-child(2n)::after{animation-delay:3s;top:60%}
+@keyframes star{0%{opacity:0;transform:translate(0,0) rotate(-40deg)}8%{opacity:.9}35%{opacity:0;transform:translate(900px,-420px) rotate(-40deg)}100%{opacity:0}}
+.proj{display:grid;grid-template-columns:1fr 1.05fr;gap:30px;align-items:start}
+.shot{border:1px solid var(--line);border-radius:16px;background:#0b0b0c;overflow:hidden}
+.bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.bar b{width:11px;height:11px;border-radius:50%}
+.bar em{flex:1;margin-left:8px;padding:5px;background:#1c1c1f;border-radius:8px;text-align:center;font-style:normal;font-size:.75rem;color:var(--mut)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:34px 16px}
+.stats div{text-align:center;padding:14px 4px;border:1px solid var(--line);border-radius:12px}
+.stats strong{display:block;font-size:1.25rem}
+.stats small{color:var(--mut);font-size:.72rem}
+.cat{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.top h3{font-size:1.5rem;line-height:1.25;font-weight:600}
+.top .btns{flex-shrink:0}
+.card ul{list-style:disc;color:var(--mut);padding-left:20px;font-size:.92rem;margin:14px 0}
+.card li{margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{background:var(--chip);border:1px solid var(--line);border-radius:8px;padding:5px 12px;font-size:.82rem}
+.sub{color:var(--mut);font-size:.95rem}
+.row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.row h3{font-size:1.2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.mini strong{display:block;margin-bottom:4px}
+.fab{position:fixed;right:0;top:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#26261f;color:var(--acc);border-radius:10px 0 0 10px;font-size:1.3rem;border:1px solid var(--line);border-right:0}
+@media(max-width:700px){.proj{grid-template-columns:1fr}.hero h1{font-size:2.1rem}.top{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.track,.card::after{animation:none}.marq{overflow-x:auto}}
+</style>
 </head>
 <body>
+<div class="wrap">
+<header class="hero">
+  <h1>Jayant Dethe</h1>
+  <p>AI/ML Developer &amp; Research Enthusiast</p>
+  <div class="btns">
+    <a class="btn" href="tel:+91-8291578805"><i class="fas fa-phone"></i> +91-8291578805</a>
+    <a class="btn" href="mailto:dethejayant@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+    <a class="btn" href="https://www.linkedin.com/in/jayant-dethe-728a0726a/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a class="btn" href="https://github.com/JayantDethe26" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+    <a class="btn" href="resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file"></i> Resume</a>
+  </div>
+</header>
 
-    <div class="bg-animation">
-        <div class="circuit" style="top: 10%; animation-delay: 0s;"></div>
-        <div class="circuit" style="top: 20%; animation-delay: 2s;"></div>
-        <div class="circuit" style="top: 30%; animation-delay: 4s;"></div>
-        <div class="circuit" style="top: 40%; animation-delay: 6s;"></div>
-        <div class="circuit" style="top: 50%; animation-delay: 8s;"></div>
-        <div class="circuit" style="top: 60%; animation-delay: 10s;"></div>
-        <div class="circuit" style="top: 70%; animation-delay: 12s;"></div>
-        <div class="circuit" style="top: 80%; animation-delay: 14s;"></div>
-    </div>
+<h2 class="label">Skills<span class="tr"></span><span class="bl"></span></h2>
+<div id="skills"></div>
 
-    <header class="header">
-        <div class="profile-container">
-            <div class="profile-image">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="profile-info">
-                <div class="term" aria-hidden="true"><span class="prompt">$</span> whoami<span class="cursor"></span></div>
-                <h1>Jayant Dethe</h1>
-                <p>AI/ML Developer & Research Enthusiast</p>
-                <div class="contact-links">
-                    <a href="tel:+91-8291578805"><i class="fas fa-phone"></i> +91-8291578805</a>
-                    <a href="mailto:dethejayant@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                    <a href="https://www.linkedin.com/in/jayant-dethe-728a0726a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/JayantDethe26" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file"></i> Resume</a>
-                </div>
-            </div>
-        </div>
-    </header>
+<h2 class="label">Experience<span class="tr"></span><span class="bl"></span></h2>
+<div class="card">
+  <div class="row"><h3>Aivora Solutions</h3><span class="sub">August 2025 — February 2026</span></div>
+  <div class="sub">Software Engineer — AI Infrastructure (Remote) · Mumbai, India</div>
+  <ul>
+    <li>Architected and deployed a production-grade FastAPI backend serving AI inference workloads; reduced average API response latency by 35% through async request handling and connection pooling.</li>
+    <li>Designed a multi-tenant prompt orchestration layer supporting 3 concurrent product lines; decoupled business logic from LLM provider using an adapter pattern, cutting provider-switch cost from days to hours.</li>
+  </ul>
+</div>
 
-    <div class="container">
+<h2 class="label">Projects<span class="tr"></span><span class="bl"></span></h2>
+<div id="projects"></div>
 
-        <!-- Experience -->
-        <section class="section">
-            <h2><i class="fas fa-briefcase"></i> Experience</h2>
+<h2 class="label">Education<span class="tr"></span><span class="bl"></span></h2>
+<div class="card">
+  <div class="row"><h3>Vidyalankar Institute of Technology</h3><span class="sub">2022 — 2026</span></div>
+  <p class="sub">B.Tech in Information Technology with Specialization in AI/ML (Honors)</p>
+  <p class="sub">CGPA: 8.9 · Mumbai, India</p>
+</div>
 
-            <div class="experience-item">
-                <div class="experience-header">
-                    <div class="company-name">Aivora Solutions</div>
-                    <div class="duration">August 2025 — February 2026</div>
-                </div>
-                <div class="role">Software Engineer — AI Infrastructure (Remote)</div>
-                <div class="location" style="color:#7a6a5a; margin-bottom:10px;">Mumbai, India</div>
-                <ul style="margin-top: 10px; padding-left: 20px; line-height:1.7;">
-                    <li>Architected and deployed a production-grade FastAPI backend serving AI inference workloads; reduced average API response latency by 35% through async request handling and connection pooling.</li>
-                    <li>Designed a multi-tenant prompt orchestration layer supporting 3 concurrent product lines; decoupled business logic from LLM provider using an adapter pattern, cutting provider-switch cost from days to hours.</li>
-                </ul>
-            </div>
-        </section>
+<h2 class="label">Competitive Programming &amp; DSA<span class="tr"></span><span class="bl"></span></h2>
+<div class="grid">
+  <div class="mini"><strong>LeetCode</strong><p class="sub">250+ problems solved — core focus on graphs (BFS/DFS, Dijkstra), dynamic programming, sliding window, and binary search.</p></div>
+  <div class="mini"><strong>Problem Solving</strong><p class="sub">Consistent practice on time/space complexity analysis; comfortable with O(n log n) optimisation trade-offs in real system design contexts.</p></div>
+</div>
 
-        <!-- Projects -->
-        <section class="section">
-            <h2><i class="fas fa-code"></i> Projects</h2>
-            <div class="projects-grid">
+<h2 class="label">Certifications<span class="tr"></span><span class="bl"></span></h2>
+<div class="grid">
+  <div class="mini"><strong>Generative AI with LangChain &amp; HuggingFace</strong><span class="sub">Udemy</span></div>
+  <div class="mini"><strong>Junior Programmer Pathway</strong><span class="sub">Unity</span></div>
+  <div class="mini"><strong>Business Management Course</strong><span class="sub">IIM Mumbai</span></div>
+  <div class="mini"><strong>TCS iON Career Edge — Young Professional</strong><span class="sub">TCS iON</span></div>
+</div>
 
-                <!-- CampusPulse -->
-                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/CampusPulse')">
-                    <div class="project-header">
-                        <div class="project-title">CampusPulse</div>
-                        <div class="project-icon"><i class="fas fa-ticket-alt"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Prisma</span>
-                        <span class="tech-tag">Auth.js</span>
-                        <span class="tech-tag">Tailwind CSS</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Built a full-stack campus event management platform (Next.js 15, React 19, TypeScript, PostgreSQL, Prisma) with role-based access for students, organizers and admins, secured with Auth.js sessions and bcrypt-hashed credentials.</li>
-                            <li>Implemented admin approval workflows for organizer accounts and events, a dynamic registration form builder (JSON-schema fields), QR-code ticketing with an organizer check-in scanner, and an analytics dashboard (Recharts); deployed on Vercel with a Neon serverless Postgres database.</li>
-                            <li>Used it live to run user registrations for a real college event.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">3</span>
-                            <span class="stat-label">User Roles</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">QR</span>
-                            <span class="stat-label">Check-in</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Live</span>
-                            <span class="stat-label">Used at Event</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JayantDethe26/CampusPulse" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
+<h2 class="label">Achievements<span class="tr"></span><span class="bl"></span></h2>
+<div class="grid">
+  <div class="mini"><strong>Smart India Hackathon Qualification</strong><p class="sub">Selected among the top 8 teams (out of 100+) in the internal college hackathon for Smart India Hackathon (SIH) qualification.</p></div>
+  <div class="mini"><strong>NGO Internship</strong><p class="sub">Completed an internship at NGO "Shivprerna Dnyanmrut Probodhini Sanstha" under the "One Year One Village Campaign" initiative.</p></div>
+</div>
+</div>
 
-                <!-- KnowledgeHub AI -->
-                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/knowledgehub-ai')">
-                    <div class="project-header">
-                        <div class="project-title">KnowledgeHub AI</div>
-                        <div class="project-icon"><i class="fas fa-project-diagram"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">pgvector</span>
-                        <span class="tech-tag">Neo4j</span>
-                        <span class="tech-tag">Meilisearch</span>
-                        <span class="tech-tag">RAG</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Built a multi-tenant AI knowledge platform with JWT authentication, organization-level access control, and a FastAPI document-processing pipeline for PDF extraction, chunking, and indexing.</li>
-                            <li>Implemented hybrid retrieval using Qwen3 embeddings, PostgreSQL/pgvector, and Meilisearch, with Neo4j for knowledge-graph relationships and contextual retrieval.</li>
-                            <li>Evaluated retrieval on 20 questions across two documents; query reformulation improved Recall@5 from 70% to 82.5% and Recall@10 from 82.5% to 97.5%.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">82.5%</span>
-                            <span class="stat-label">Recall@5</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">97.5%</span>
-                            <span class="stat-label">Recall@10</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">20</span>
-                            <span class="stat-label">Eval Questions</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JayantDethe26/knowledgehub-ai" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
+<a href="#" class="fab" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
 
-                <!-- Intervue.AI -->
-                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/IntervueAI')">
-                    <div class="project-header">
-                        <div class="project-title">Intervue.AI</div>
-                        <div class="project-icon"><i class="fas fa-microphone-alt"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LLMs</span>
-                        <span class="tech-tag">Whisper STT</span>
-                        <span class="tech-tag">OpenCV</span>
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">FastAPI</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Developed an AI interview tool integrating LLM and speech APIs to run technical and aptitude interviews and generate structured candidate reports, cutting recruiter workload.</li>
-                            <li>Built a RAG-based question generator over curated datasets for consistent, data-driven assessments.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">STT</span>
-                            <span class="stat-label">Whisper</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">RAG</span>
-                            <span class="stat-label">Question Bank</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Report</span>
-                            <span class="stat-label">Per Candidate</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JayantDethe26/IntervueAI" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
+<script>
+const skills=[
+ [["Python (Advanced)","fab fa-python","#4b8bbe"],["Java","fab fa-java","#f89820"],["JavaScript / TypeScript","fab fa-js","#f7df1e"],["Go","fas fa-code","#00add8"],["React.js","fab fa-react","#61dafb"],["Next.js","fas fa-n","#fff"],["Node.js","fab fa-node-js","#6cc24a"],["FastAPI","fas fa-bolt","#05998b"],["Express.js","fas fa-server","#ccc"],["REST API Design","fas fa-plug","#ccc"],["Async Programming","fas fa-arrows-spin","#ccc"],["WebSockets","fas fa-tower-broadcast","#ccc"]],
+ [["Docker","fab fa-docker","#2496ed"],["AWS (EC2, S3)","fab fa-aws","#ff9900"],["GitHub Actions","fab fa-github","#fff"],["Jenkins","fas fa-gears","#ccc"],["Linux","fab fa-linux","#fcc624"],["Render","fas fa-cloud","#ccc"],["Vercel","fas fa-play fa-rotate-270","#fff"],["PostgreSQL","fas fa-database","#7aa5d8"],["pgvector","fas fa-vector-square","#ccc"],["Neo4j","fas fa-diagram-project","#4c8eda"],["MongoDB Atlas","fas fa-leaf","#47a248"],["Redis","fas fa-layer-group","#dc382d"],["MySQL","fas fa-database","#00758f"]],
+ [["LLMs","fas fa-brain","#ccc"],["RAG","fas fa-magnifying-glass-chart","#ccc"],["GraphRAG","fas fa-share-nodes","#ccc"],["RAGAS","fas fa-chart-line","#ccc"],["LangChain","fas fa-link","#ccc"],["LangGraph","fas fa-project-diagram","#ccc"],["LlamaIndex","fas fa-book","#ccc"],["Hugging Face","fas fa-face-smile","#ffd21e"],["PyTorch","fas fa-fire","#ee4c2c"],["Fine-tuning (LoRA, PEFT)","fas fa-sliders","#ccc"],["Git","fab fa-git-alt","#f05032"],["GitHub API","fab fa-github","#fff"],["pytest","fas fa-vial","#ccc"],["System Design","fas fa-sitemap","#ccc"],["Agile Workflows","fas fa-rotate","#ccc"]]
+];
+document.getElementById('skills').innerHTML=skills.map(r=>{
+  const h=r.map(s=>`<span class="sk"><i class="${s[1]}" style="color:${s[2]}"></i>${s[0]}</span>`).join('');
+  return `<div class="marq"><div class="track">${h}${h}</div></div>`}).join('');
 
-
-                <!-- StreamBill Pro -->
-                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/StreamBill-Pro')">
-                    <div class="project-header">
-                        <div class="project-title">StreamBill Pro</div>
-                        <div class="project-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Redis Streams</span>
-                        <span class="tech-tag">Celery</span>
-                        <span class="tech-tag">Docker</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Engineered a multi-tenant usage-based billing and API metering platform with a graduated tier pricing engine supporting flat fees, volume discounts, and overage billing across multiple organizations.</li>
-                            <li>Built a high-throughput event ingestion pipeline using Redis Streams with consumer groups, enabling guaranteed at-least-once delivery, automatic redelivery on worker failure, and batch DB writes of 100 events per flush.</li>
-                            <li>Implemented idempotent event deduplication via Redis, an outbox pattern for crash-safe invoice delivery, a WebSocket-based live usage dashboard, and Celery workers for hourly aggregation and payment retry with exponential backoff.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">100</span>
-                            <span class="stat-label">Events/Flush</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Multi</span>
-                            <span class="stat-label">Tenant</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">Redis</span>
-                            <span class="stat-label">Streams</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/JayantDethe26/StreamBill-Pro" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
-
-                <!-- IntelliFix Engine -->
-                <div class="project-card" onclick="window.open('https://drive.google.com/file/d/1UCisHzmCBPNWiVspaB8_mDbGiJWgw1iJ/view?usp=sharing')">
-                    <div class="project-header">
-                        <div class="project-title">IntelliFix Engine</div>
-                        <div class="project-icon"><i class="fas fa-robot"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LangGraph</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">GitHub API</span>
-                        <span class="tech-tag">Multi-Agent Systems</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Engineered a fault-tolerant autonomous code-repair system: a 3-agent LangGraph pipeline (analyser → fixer → validator) that reads GitHub issues, generates patches, and raises PRs with zero human intervention.</li>
-                            <li>Implemented Docker-sandboxed execution with iterative retry-backoff logic and isolated environment state per run to eliminate cross-execution contamination, reducing false-failure rate by ~60% versus stateless execution.</li>
-                            <li>Built a dynamic entry-point detection algorithm using AST parsing across multi-file repositories; the system successfully resolved issues on real-world OSS repos averaging 200+ source files.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">3</span>
-                            <span class="stat-label">Agent Pipeline</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">~60%</span>
-                            <span class="stat-label">Fewer False Fails</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">200+</span>
-                            <span class="stat-label">Files/Repo</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://drive.google.com/file/d/1UCisHzmCBPNWiVspaB8_mDbGiJWgw1iJ/view?usp=sharing" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Demo
-                        </a>
-                    </div>
-                </div>
-
-                <!-- URL Shortener -->
-                <div class="project-card" onclick="window.open('https://url-shortner-c933.onrender.com')">
-                    <div class="project-header">
-                        <div class="project-title">URL Shortener</div>
-                        <div class="project-icon"><i class="fas fa-link"></i></div>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">MongoDB Atlas</span>
-                        <span class="tech-tag">Redis</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Render</span>
-                    </div>
-                    <div class="project-description">
-                        <ul>
-                            <li>Built a production-deployed URL shortening service using Base62 encoding over a 62⁶ keyspace (~56B combinations), with optimistic locking in MongoDB to prevent key collisions under concurrent write load.</li>
-                            <li>Reduced redirect latency by ~82% using Redis write-through caching with TTL aligned to URL expiry; validated via load test at 300 concurrent requests — p95 latency dropped from 190ms to 34ms.</li>
-                            <li>Designed async analytics writes via an event-queue pattern to decouple the redirect path from DB writes, enforced sliding-window rate limiting (100 req/min/IP), and containerised with Docker for deployment on Render.</li>
-                        </ul>
-                    </div>
-                    <div class="project-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">~82%</span>
-                            <span class="stat-label">Latency Cut</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">34ms</span>
-                            <span class="stat-label">p95 Latency</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">56B</span>
-                            <span class="stat-label">Keyspace</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://url-shortner-c933.onrender.com" class="project-link" target="_blank" onclick="event.stopPropagation();">
-                            <i class="fas fa-external-link-alt"></i> Live
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Education -->
-        <section class="section">
-            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div class="education-grid">
-                <div class="education-card">
-                    <div class="education-image"><i class="fas fa-university"></i></div>
-                    <div class="education-title">Vidyalankar Institute of Technology</div>
-                    <div class="education-duration">2022 — 2026</div>
-                    <div class="degree">B.Tech in Information Technology with Specialization in AI/ML (Honors)</div>
-                    <div class="cgpa">CGPA: 8.9</div>
-                    <div class="location">Mumbai, India</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="section">
-            <h2><i class="fas fa-cog"></i> Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python (Advanced)</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">JavaScript / TypeScript</span>
-                        <span class="skill-tag">Go</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Full-Stack & APIs</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">REST API Design</span>
-                        <span class="skill-tag">Async Programming</span>
-                        <span class="skill-tag">WebSockets</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Infrastructure & DevOps</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">AWS (EC2, S3)</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">Render</span>
-                        <span class="skill-tag">Vercel</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases & Caching</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">pgvector</span>
-                        <span class="skill-tag">Neo4j</span>
-                        <span class="skill-tag">MongoDB Atlas</span>
-                        <span class="skill-tag">Redis</span>
-                        <span class="skill-tag">MySQL</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>AI / ML Stack</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">LLMs</span>
-                        <span class="skill-tag">RAG</span>
-                        <span class="skill-tag">GraphRAG</span>
-                        <span class="skill-tag">RAGAS</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">LangGraph</span>
-                        <span class="skill-tag">LlamaIndex</span>
-                        <span class="skill-tag">Hugging Face</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Fine-tuning (LoRA, PEFT)</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Practices</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub API</span>
-                        <span class="skill-tag">Unit Testing (pytest)</span>
-                        <span class="skill-tag">System Design</span>
-                        <span class="skill-tag">Agile Workflows</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Competitive Programming & DSA -->
-        <section class="section">
-            <h2><i class="fas fa-laptop-code"></i> Competitive Programming & DSA</h2>
-            <div class="dsa-list">
-                <div class="dsa-item">
-                    <strong>LeetCode</strong>
-                    <p>250+ problems solved — core focus on graphs (BFS/DFS, Dijkstra), dynamic programming, sliding window, and binary search.</p>
-                </div>
-                <div class="dsa-item">
-                    <strong>Problem Solving</strong>
-                    <p>Consistent practice on time/space complexity analysis; comfortable with O(n log n) optimisation trade-offs in real system design contexts.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section class="section">
-            <h2><i class="fas fa-certificate"></i> Certifications</h2>
-            <div class="cert-grid">
-                <div class="cert-item">
-                    <strong>Generative AI with LangChain & HuggingFace</strong>
-                    <div class="cert-source">Udemy</div>
-                </div>
-                <div class="cert-item">
-                    <strong>Junior Programmer Pathway</strong>
-                    <div class="cert-source">Unity</div>
-                </div>
-                <div class="cert-item">
-                    <strong>Business Management Course</strong>
-                    <div class="cert-source">IIM Mumbai</div>
-                </div>
-                <div class="cert-item">
-                    <strong>TCS iON Career Edge — Young Professional</strong>
-                    <div class="cert-source">TCS iON</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Achievements -->
-        <section class="section">
-            <h2><i class="fas fa-trophy"></i> Achievements</h2>
-            <div class="achievements-list">
-                <div class="achievement-item">
-                    <strong>Smart India Hackathon Qualification</strong>
-                    <p>Selected among the top 8 teams (out of 100+) in the internal college hackathon for Smart India Hackathon (SIH) qualification.</p>
-                </div>
-                <div class="achievement-item">
-                    <strong>NGO Internship</strong>
-                    <p>Completed an internship at NGO "Shivprerna Dnyanmrut Probodhini Sanstha" under the "One Year One Village Campaign" initiative.</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <a href="#" class="fab" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Scroll-reveal for sections
-            const observer = new IntersectionObserver(function (entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(40px)';
-                section.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-                observer.observe(section);
-            });
-        });
-
-        // Typing effect for name
-        function typeWriter(element, text, speed) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        window.addEventListener('load', function () {
-            const nameEl = document.querySelector('.profile-info h1');
-            const original = nameEl.textContent;
-            typeWriter(nameEl, original, 120);
-        });
-    </script>
+const P=[
+{t:"CampusPulse",c:"Event management",u:"https://github.com/JayantDethe26/CampusPulse",l:["Code","fab fa-github"],
+ s:[["3","User roles"],["QR","Check-in"],["Live","Used at event"]],
+ b:["Built a full-stack campus event management platform (Next.js 15, React 19, TypeScript, PostgreSQL, Prisma) with role-based access for students, organizers and admins, secured with Auth.js sessions and bcrypt-hashed credentials.","Implemented admin approval workflows for organizer accounts and events, a dynamic registration form builder (JSON-schema fields), QR-code ticketing with an organizer check-in scanner, and an analytics dashboard (Recharts); deployed on Vercel with a Neon serverless Postgres database.","Used it live to run user registrations for a real college event."],
+ g:["Next.js","React","TypeScript","PostgreSQL","Prisma","Auth.js","Tailwind CSS"]},
+{t:"KnowledgeHub AI",c:"AI knowledge platform",u:"https://github.com/JayantDethe26/knowledgehub-ai",l:["Code","fab fa-github"],
+ s:[["82.5%","Recall@5"],["97.5%","Recall@10"],["20","Eval questions"]],
+ b:["Built a multi-tenant AI knowledge platform with JWT authentication, organization-level access control, and a FastAPI document-processing pipeline for PDF extraction, chunking, and indexing.","Implemented hybrid retrieval using Qwen3 embeddings, PostgreSQL/pgvector, and Meilisearch, with Neo4j for knowledge-graph relationships and contextual retrieval.","Evaluated retrieval on 20 questions across two documents; query reformulation improved Recall@5 from 70% to 82.5% and Recall@10 from 82.5% to 97.5%."],
+ g:["Python","FastAPI","PostgreSQL","pgvector","Neo4j","Meilisearch","RAG"]},
+{t:"Intervue.AI",c:"AI interviews",u:"https://github.com/JayantDethe26/IntervueAI",l:["Code","fab fa-github"],
+ s:[["STT","Whisper"],["RAG","Question bank"],["Report","Per candidate"]],
+ b:["Developed an AI interview tool integrating LLM and speech APIs to run technical and aptitude interviews and generate structured candidate reports, cutting recruiter workload.","Built a RAG-based question generator over curated datasets for consistent, data-driven assessments."],
+ g:["Python","LLMs","Whisper STT","OpenCV","RAG","FastAPI"]},
+{t:"StreamBill Pro",c:"Usage-based billing",u:"https://github.com/JayantDethe26/StreamBill-Pro",l:["Code","fab fa-github"],
+ s:[["100","Events/flush"],["Multi","Tenant"],["Redis","Streams"]],
+ b:["Engineered a multi-tenant usage-based billing and API metering platform with a graduated tier pricing engine supporting flat fees, volume discounts, and overage billing across multiple organizations.","Built a high-throughput event ingestion pipeline using Redis Streams with consumer groups, enabling guaranteed at-least-once delivery, automatic redelivery on worker failure, and batch DB writes of 100 events per flush.","Implemented idempotent event deduplication via Redis, an outbox pattern for crash-safe invoice delivery, a WebSocket-based live usage dashboard, and Celery workers for hourly aggregation and payment retry with exponential backoff."],
+ g:["Python","FastAPI","PostgreSQL","Redis Streams","Celery","Docker"]},
+{t:"IntelliFix Engine",c:"Autonomous code repair",u:"https://drive.google.com/file/d/1UCisHzmCBPNWiVspaB8_mDbGiJWgw1iJ/view?usp=sharing",l:["Demo","fas fa-arrow-up-right-from-square"],
+ s:[["3","Agent pipeline"],["~60%","Fewer false fails"],["200+","Files/repo"]],
+ b:["Engineered a fault-tolerant autonomous code-repair system: a 3-agent LangGraph pipeline (analyser → fixer → validator) that reads GitHub issues, generates patches, and raises PRs with zero human intervention.","Implemented Docker-sandboxed execution with iterative retry-backoff logic and isolated environment state per run to eliminate cross-execution contamination, reducing false-failure rate by ~60% versus stateless execution.","Built a dynamic entry-point detection algorithm using AST parsing across multi-file repositories; the system successfully resolved issues on real-world OSS repos averaging 200+ source files."],
+ g:["Python","LangGraph","Docker","GitHub API","Multi-Agent Systems"]},
+{t:"URL Shortener",c:"Backend service",u:"https://url-shortner-c933.onrender.com",l:["Live","fas fa-arrow-up-right-from-square"],
+ s:[["~82%","Latency cut"],["34ms","p95 latency"],["56B","Keyspace"]],
+ b:["Built a production-deployed URL shortening service using Base62 encoding over a 62⁶ keyspace (~56B combinations), with optimistic locking in MongoDB to prevent key collisions under concurrent write load.","Reduced redirect latency by ~82% using Redis write-through caching with TTL aligned to URL expiry; validated via load test at 300 concurrent requests — p95 latency dropped from 190ms to 34ms.","Designed async analytics writes via an event-queue pattern to decouple the redirect path from DB writes, enforced sliding-window rate limiting (100 req/min/IP), and containerised with Docker for deployment on Render."],
+ g:["Node.js","Express","MongoDB Atlas","Redis","Docker","Render"]}
+];
+document.getElementById('projects').innerHTML=P.map(p=>`
+<article class="card"><div class="proj">
+ <div class="shot"><div class="bar"><b style="background:#ff5f57"></b><b style="background:#febc2e"></b><b style="background:#28c840"></b><em>${p.t}</em></div>
+ <div class="stats">${p.s.map(s=>`<div><strong>${s[0]}</strong><small>${s[1]}</small></div>`).join('')}</div></div>
+ <div><div class="cat">${p.c}</div>
+ <div class="top"><h3>${p.t}</h3><div class="btns"><a class="btn" href="${p.u}" target="_blank" rel="noopener"><i class="${p.l[1]}"></i> ${p.l[0]}</a></div></div>
+ <ul>${p.b.map(x=>`<li>${x}</li>`).join('')}</ul>
+ <div class="tags">${p.g.map(x=>`<span>${x}</span>`).join('')}</div></div>
+</div></article>`).join('');
+</script>
 </body>
 </html>
