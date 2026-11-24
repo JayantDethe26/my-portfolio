@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jayant Dethe - AI/ML Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -14,8 +15,13 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f6f0e4 0%, #eee3d0 50%, #e7d9c1 100%);
-            background-attachment: fixed;
+            background-color: #d4b08a;
+            background-image:
+                url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .22  0 0 0 0 .1  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+                repeating-linear-gradient(90deg, rgba(110, 72, 36, 0.09) 0 2px, transparent 2px 8px),
+                linear-gradient(rgba(42, 28, 17, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 28, 17, 0.06) 1px, transparent 1px);
+            background-size: 220px 220px, auto, 32px 32px, 32px 32px;
             color: #3b2f25;
             overflow-x: hidden;
         }
@@ -53,7 +59,7 @@
             padding: 80px 20px;
             text-align: center;
             background: linear-gradient(45deg, rgba(139,94,60,0.1) 0%, rgba(181,84,58,0.08) 100%);
-            border-bottom: 2px solid rgba(139,94,60,0.3);
+            border-bottom: 2px solid rgba(42,28,17,0.35);
         }
 
         .profile-container {
@@ -69,7 +75,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 4px solid #8b5e3c;
+            border: 4px solid #2a1c11;
             background: linear-gradient(45deg, #b5543a, #8b5e3c, #566a47, #7a8f64);
             display: flex;
             align-items: center;
@@ -89,7 +95,7 @@
         .profile-info h1 {
             font-size: 3.5em;
             margin-bottom: 10px;
-            background: linear-gradient(45deg, #8b5e3c, #b5543a, #566a47);
+            background: linear-gradient(45deg, #2a1c11, #7a2f14, #3d2a14);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -103,7 +109,8 @@
 
         .profile-info p {
             font-size: 1.3em;
-            color: #8b5e3c;
+            color: #4a2f1a;
+            font-weight: 600;
             margin-bottom: 20px;
         }
 
@@ -118,7 +125,7 @@
             color: #3b2f25;
             text-decoration: none;
             padding: 10px 20px;
-            border: 2px solid #8b5e3c;
+            border: 2px solid #2a1c11;
             border-radius: 25px;
             transition: all 0.3s ease;
             background: rgba(139,94,60,0.1);
@@ -142,9 +149,10 @@
         .section {
             margin: 60px 0;
             padding: 40px;
-            background: rgba(255,252,245,0.6);
+            background: #fbf6ea;
             border-radius: 20px;
-            border: 1px solid rgba(139,94,60,0.2);
+            border: 2px solid rgba(42,28,17,0.55);
+            box-shadow: 0 12px 30px rgba(60,35,15,0.28);
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
@@ -454,7 +462,7 @@
         }
 
         .education-card {
-            background: rgba(255,252,245,0.6);
+            background: rgba(240,228,203,0.75);
             padding: 30px 25px;
             border-radius: 18px;
             border: 1px solid rgba(139,94,60,0.3);
@@ -573,7 +581,7 @@
         }
 
         .dsa-item {
-            background: rgba(255,252,245,0.6);
+            background: rgba(240,228,203,0.75);
             padding: 22px 25px;
             border-radius: 12px;
             border-left: 4px solid #566a47;
@@ -582,7 +590,7 @@
 
         .dsa-item:hover {
             transform: translateX(6px);
-            background: rgba(255,252,245,0.95);
+            background: rgba(247,239,221,1);
         }
 
         .dsa-item strong {
@@ -609,7 +617,7 @@
         }
 
         .cert-item {
-            background: rgba(255,252,245,0.6);
+            background: rgba(240,228,203,0.75);
             padding: 20px;
             border-radius: 12px;
             border-left: 4px solid #566a47;
@@ -621,7 +629,7 @@
 
         .cert-item:hover {
             transform: translateX(5px);
-            background: rgba(255,252,245,0.95);
+            background: rgba(247,239,221,1);
         }
 
         .cert-item strong {
@@ -644,7 +652,7 @@
         }
 
         .achievement-item {
-            background: rgba(255,252,245,0.6);
+            background: rgba(240,228,203,0.75);
             padding: 22px 25px;
             border-radius: 12px;
             border-left: 4px solid #b5543a;
@@ -653,7 +661,7 @@
 
         .achievement-item:hover {
             transform: translateX(6px);
-            background: rgba(255,252,245,0.95);
+            background: rgba(247,239,221,1);
         }
 
         .achievement-item strong {
@@ -704,6 +712,61 @@
             transform: scale(1.1);
             box-shadow: 0 10px 30px rgba(139,94,60,0.5);
         }
+
+        /* ---------- Light tech accents ---------- */
+        :root { --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Courier New', monospace; }
+
+        .term {
+            font-family: var(--mono);
+            font-size: 0.95em;
+            color: #4a2f1a;
+            margin-bottom: 6px;
+        }
+        .term .prompt { color: #b5543a; font-weight: 700; margin-right: 6px; }
+        .cursor {
+            display: inline-block;
+            width: 9px;
+            height: 1.05em;
+            margin-left: 4px;
+            vertical-align: text-bottom;
+            background: #2a1c11;
+            animation: blink 1s steps(2, start) infinite;
+        }
+        @keyframes blink { to { visibility: hidden; } }
+
+        .section h2::before {
+            content: '// ';
+            font-family: var(--mono);
+            font-weight: 700;
+            color: #b5543a;
+        }
+
+        .tech-tag, .skill-tag, .stat-number, .stat-label, .duration, .project-link, .cert-source, .location {
+            font-family: var(--mono);
+        }
+        .tech-tag { font-size: 0.74em; }
+        .skill-tag { font-size: 0.8em; }
+        .stat-label { font-size: 0.72em; }
+        .skill-category h3 { font-family: var(--mono); letter-spacing: 0.04em; }
+        .skill-category h3::before { content: '> '; color: #566a47; }
+
+        /* editor-style window dots on project cards */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 18px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #b5543a;
+            box-shadow: 14px 0 0 #d9a441, 28px 0 0 #566a47;
+            opacity: 0.85;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cursor { animation: none; }
+        }
     </style>
 </head>
 <body>
@@ -725,6 +788,7 @@
                 <i class="fas fa-robot"></i>
             </div>
             <div class="profile-info">
+                <div class="term" aria-hidden="true"><span class="prompt">$</span> whoami<span class="cursor"></span></div>
                 <h1>Jayant Dethe</h1>
                 <p>AI/ML Developer & Research Enthusiast</p>
                 <div class="contact-links">
@@ -762,6 +826,134 @@
         <section class="section">
             <h2><i class="fas fa-code"></i> Projects</h2>
             <div class="projects-grid">
+
+                <!-- CampusPulse -->
+                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/CampusPulse')">
+                    <div class="project-header">
+                        <div class="project-title">CampusPulse</div>
+                        <div class="project-icon"><i class="fas fa-ticket-alt"></i></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Prisma</span>
+                        <span class="tech-tag">Auth.js</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Built a full-stack campus event management platform (Next.js 15, React 19, TypeScript, PostgreSQL, Prisma) with role-based access for students, organizers and admins, secured with Auth.js sessions and bcrypt-hashed credentials.</li>
+                            <li>Implemented admin approval workflows for organizer accounts and events, a dynamic registration form builder (JSON-schema fields), QR-code ticketing with an organizer check-in scanner, and an analytics dashboard (Recharts); deployed on Vercel with a Neon serverless Postgres database.</li>
+                            <li>Used it live to run user registrations for a real college event.</li>
+                        </ul>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">User Roles</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">QR</span>
+                            <span class="stat-label">Check-in</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Live</span>
+                            <span class="stat-label">Used at Event</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/JayantDethe26/CampusPulse" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- KnowledgeHub AI -->
+                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/knowledgehub-ai')">
+                    <div class="project-header">
+                        <div class="project-title">KnowledgeHub AI</div>
+                        <div class="project-icon"><i class="fas fa-project-diagram"></i></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">pgvector</span>
+                        <span class="tech-tag">Neo4j</span>
+                        <span class="tech-tag">Meilisearch</span>
+                        <span class="tech-tag">RAG</span>
+                    </div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Built a multi-tenant AI knowledge platform with JWT authentication, organization-level access control, and a FastAPI document-processing pipeline for PDF extraction, chunking, and indexing.</li>
+                            <li>Implemented hybrid retrieval using Qwen3 embeddings, PostgreSQL/pgvector, and Meilisearch, with Neo4j for knowledge-graph relationships and contextual retrieval.</li>
+                            <li>Evaluated retrieval on 20 questions across two documents; query reformulation improved Recall@5 from 70% to 82.5% and Recall@10 from 82.5% to 97.5%.</li>
+                        </ul>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">82.5%</span>
+                            <span class="stat-label">Recall@5</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">97.5%</span>
+                            <span class="stat-label">Recall@10</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">20</span>
+                            <span class="stat-label">Eval Questions</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/JayantDethe26/knowledgehub-ai" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Intervue.AI -->
+                <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/IntervueAI')">
+                    <div class="project-header">
+                        <div class="project-title">Intervue.AI</div>
+                        <div class="project-icon"><i class="fas fa-microphone-alt"></i></div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">Whisper STT</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                    <div class="project-description">
+                        <ul>
+                            <li>Developed an AI interview tool integrating LLM and speech APIs to run technical and aptitude interviews and generate structured candidate reports, cutting recruiter workload.</li>
+                            <li>Built a RAG-based question generator over curated datasets for consistent, data-driven assessments.</li>
+                        </ul>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">STT</span>
+                            <span class="stat-label">Whisper</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">RAG</span>
+                            <span class="stat-label">Question Bank</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Report</span>
+                            <span class="stat-label">Per Candidate</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/JayantDethe26/IntervueAI" class="project-link" target="_blank" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+
 
                 <!-- StreamBill Pro -->
                 <div class="project-card" onclick="window.open('https://github.com/JayantDethe26/StreamBill-Pro')">
@@ -920,8 +1112,10 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Backend & APIs</h3>
+                    <h3>Full-Stack & APIs</h3>
                     <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Next.js</span>
                         <span class="skill-tag">Node.js</span>
                         <span class="skill-tag">FastAPI</span>
                         <span class="skill-tag">Express.js</span>
@@ -946,6 +1140,8 @@
                     <h3>Databases & Caching</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">pgvector</span>
+                        <span class="skill-tag">Neo4j</span>
                         <span class="skill-tag">MongoDB Atlas</span>
                         <span class="skill-tag">Redis</span>
                         <span class="skill-tag">MySQL</span>
@@ -956,6 +1152,8 @@
                     <div class="skill-tags">
                         <span class="skill-tag">LLMs</span>
                         <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">GraphRAG</span>
+                        <span class="skill-tag">RAGAS</span>
                         <span class="skill-tag">LangChain</span>
                         <span class="skill-tag">LangGraph</span>
                         <span class="skill-tag">LlamaIndex</span>
